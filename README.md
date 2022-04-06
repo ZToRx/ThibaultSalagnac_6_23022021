@@ -14,3 +14,4 @@ Dependencies :
 
 .env :
 MONGOOSEADRESS= ##Adress of your database##
+PORT= ##3000##

@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+const userRoutes = require("./routes/userRoutes");
+
 //Connexion a MongoDB
 mongoose.connect(process.env.MONGOOSEADRESS,
   { useNewUrlParser: true,
@@ -19,8 +21,7 @@ app.use((req, res, next) => {
 });
 
 //Middleware
-app.use((req, res) => {
-   res.json({ message: 'Votre requête a bien été reçue !' }); 
-});
+app.use(express.json());
+app.use("/api/auth", userRoutes);
 
 module.exports = app;

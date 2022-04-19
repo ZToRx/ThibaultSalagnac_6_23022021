@@ -2,8 +2,9 @@ const express = require('express');
 
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
 
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require('./routes/userRoutes');
 
 //Connexion a MongoDB
 mongoose.connect(process.env.MONGOOSEADRESS,
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 
 //Middleware
 app.use(express.json());
-app.use("/api/auth", userRoutes);
+app.use('/api/auth', userRoutes);
+app.use('/images', express.static(path.join(__dirname,'images')));
 
 module.exports = app;

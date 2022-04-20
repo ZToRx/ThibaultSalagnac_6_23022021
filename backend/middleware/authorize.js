@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
         const token = req.headers.authorization.split(" ")[1];
         const decodedToken = jwt.verify(token, process.env.JWT_KEY);
         req.auth = decodedToken.userId;
-        if (req.body.userId && req.body.userId !== req.auth) {
+        if (!req.auth || (req.body.userId && req.body.userId !== req.auth)) {
             throw error
         } else {
             next();

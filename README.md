@@ -11,6 +11,8 @@ Dependencies :
 -mongoose-unique-validator
 -multer
 -nodemon
+-helmet
+-express-rate-limit
 
 .env :
 MONGOOSEADRESS= ##Adress of your database##
